@@ -198,14 +198,15 @@ Use your locally running **Flex Gateway** (Docker) to manage and proxy your API 
 
 1. Navigate to **API Manager** > **Add API** > **Add New API**.
 2. Select **Flex Gateway** as the runtime.
+    * **Important:**: Before this step, flex-gateway must be in running mode locally and connected to Runtime Manager in Anypoint Platform.
 3. Choose your **Connected Gateway** instance from the list.
 4. Link the instance to the **Employee System API** asset you just published to Exchange.
 5. **Configure Endpoints:**
-    * **Implementation URI:** `http://host.docker.internal:8083` (Points to your local backend service).
-    * **Consumer Endpoint:** `http://localhost:8081` (The external port users will call).
-    * **Important:** In consumer endpoint use port number of flexgateway like 8081, because consumer need to hit flexgateway.
-6. Click **Save & Deploy**.
-
+    * **Implementation URI:** `http://host.docker.internal:8083/` (Points to your local backend service).
+    * **Consumer Endpoint:** `http://localhost:8081/` (The external port users will call).
+    * **Important:** In consumer endpoint use port number of flexgateway like 8081, because consumer need to hit flexgateway endpoint. Use / at the end of endpoint name.
+6. Click **Save & Deploy:**
+   * After deployment you can see API status as Active, which means your flex-gateway connected to your API insatnce to           download security policies.
 #### 5. Security & SLA Policy
 We will apply an **SLA-based Rate Limiting** policy to restrict traffic based on specific client credentials and tiers.
 
