@@ -93,6 +93,15 @@ If gateway started successfully, you can view the gateway connected in Anypoint 
   ```bash
   docker run --rm -v "$(pwd)":/usr/local/share/mulesoft/flex-gateway/conf.d -p 8081:8081 mulesoft/flex-gateway
   ```
+* Docker commands (run via CMD or powershell):
+   | Task | Command |
+   | :--- | :--- |
+   | **Start Gateway** | `docker run -d --name flex-gateway -v <path>:/registration mulesoft/flex-gateway` |
+   | **View Logs** | `docker logs -f flex-gateway` |
+   | **Stop Gateway** | `docker stop flex-gateway` |
+   | **Check Connectivity** | `docker exec -it flex-gateway flexctl status` |
+   | **Remove Container** | `docker rm -f flex-gateway` |
+  
 ### POC: Apply security policies on Employee API using Flex Gateway
 ##### Employee System API: End-to-End Lifecycle Documentation
 This repository provides a step-by-step guide for designing, publishing, securing, and testing an Employee System API using the **Anypoint Platform** and **MuleSoft Flex Gateway**.
