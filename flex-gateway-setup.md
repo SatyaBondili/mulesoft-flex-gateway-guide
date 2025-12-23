@@ -74,33 +74,8 @@ If gateway started successfully, you can view the gateway connected in Anypoint 
 * **Connected Mode:** Flex Gateway code deployed on Client Machine but Managed via the Anypoint Platform UI,
 * **Local Mode:** The Flex Gateway is deployed on a client machine and managed via local declarative configuration file (YAML) on the same machine.
 
-### Troubleshooting
-* Pull the Image Syntax:
-  ```bash
-  docker pull mulesoft/flex-gateway
-  ```
-* Register the Gateway Syntax:
-  ```bash
-  docker run --entrypoint flexctl -u $UID \
-  -v "$(pwd)":/registration mulesoft/flex-gateway \
-  registration create --organization=6d87364f-f01a-4f1c-8d1d-52fe8f19402c \
-  --token=d6986ff5-1593-4b3f-9a19-ec52b5896aef \
-  --output-directory=/registration \
-  --connected=true \
-  <gateway-name>
-  ```
-* Start the gateway Syntax:
-  ```bash
-  docker run --rm -v "$(pwd)":/usr/local/share/mulesoft/flex-gateway/conf.d -p 8081:8081 mulesoft/flex-gateway
-  ```
-* Docker commands (run via CMD or powershell):
-   | Task | Command |
-   | :--- | :--- |
-   | **Start Gateway** | `docker run -d --name flex-gateway -v <path>:/registration mulesoft/flex-gateway` |
-   | **View Logs** | `docker logs -f flex-gateway` |
-   | **Stop Gateway** | `docker stop flex-gateway` |
-   | **Check Connectivity** | `docker exec -it flex-gateway flexctl status` |
-   | **Remove Container** | `docker rm -f flex-gateway` |
+### Troubleshooting 
+[View Troubleshooting Guide](TROUBLESHOOTING.md)
   
 ### POC: Apply security policies on Employee API using Flex Gateway
 ##### Employee System API: End-to-End Lifecycle Documentation
