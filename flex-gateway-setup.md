@@ -75,7 +75,7 @@ If gateway started successfully, you can view the gateway connected in Anypoint 
 * **Local Mode:** The Flex Gateway is deployed on a client machine and managed via local declarative configuration file (YAML) on the same machine.
 
 ### Troubleshooting 
-[View Troubleshooting Guide](TROUBLESHOOTING.md)
+[View Troubleshooting Guide](troubleshooting.md)
   
 ### POC: Apply security policies on Employee API using Flex Gateway
 ##### Employee System API: End-to-End Lifecycle Documentation
