@@ -1,19 +1,23 @@
-# Employee API: Design & Implementation Guide
+# Mule Employee API: Design & Implementation Guide
 This guide provides a step-by-step walkthrough for designing an Employee CRUD API using RAML and implementing it using Mule 4
 
-### Project Phases
-1. API Design in Anypoint Platform (RAML 1.0)
-2. API Implementation in Anypoint Studio (Mule 4)
-3. Local Deployment & Testing
+#### 📋 Table of Contents
+- [1. API Design](#1-api-design)
+- [2. Publishing to Exchange](#2-publishing-to-exchange)
+- [3. Create API Implementation in MuleSoft](#3-mule)
+- [4. Gateway Registration](#3-gateway-registration)
+- [5. Security & SLA Policy](#4-security--sla-policy)
+- [6. Testing with Postman](#5-testing-with-postman)
 
-### Phase 1: API Design in Anypoint Platform
-1. Log in to [Anypoint Platform](https://anypoint.mulesoft.com).
-2. Navigate to **Design Center** > **Create New** > **API Specification**.
-3. Name it `emp-system-api`.
+#### 1. API Design
+The API is designed using **RAML 1.0** to provide basic CRUD functionality for employee records.
 
-RAML Definition
+##### Define the Specification
+1. Navigate to **Design Center** in Anypoint Platform.
+2. Create a new **API Specification** named `Employee System API`.
+3. Paste the following RAML definition:
 
-```raml
+```yaml
 #%RAML 1.0
 title: Employee System API
 version: v1
@@ -81,7 +85,7 @@ types:
         204:
           description: Successfully deleted
 ```
-#### Publish to Exchange
+#### 2. Publishing to Exchange
 Publishing allows your API to be managed by **API Manager** and discovered by other developers within your organization.
 
 1. In the **Design Center** editor, click the **Publish** button in the top-right corner.
@@ -90,7 +94,13 @@ Publishing allows your API to be managed by **API Manager** and discovered by ot
     * **API Version:** `v1`
 3. Click **Publish to Exchange**.
 
-#### API Registration on Flex Gateway
+#### 3. Create API implementation in MuleSoft
+Create Mule application for employee system api in Anypoint Studio and run at port 8083 locally.
+- host: localhost
+- port: 8081
+- listener path: /api/*
+
+#### 4. Gateway Registration
 Use your locally running **Flex Gateway** (Docker) to manage and proxy your API traffic.
 
 1. Navigate to **API Manager** > **Add API** > **Add New API**.
@@ -104,7 +114,7 @@ Use your locally running **Flex Gateway** (Docker) to manage and proxy your API 
     * **Important:** In consumer endpoint use port number of flexgateway like 8081, because consumer need to hit flexgateway endpoint. Use / at the end of endpoint name.
 6. Click **Save & Deploy:**
    * After deployment you can see API status as Active, which means your flex-gateway connected to your API insatnce to           download security policies.
-#### Apply Security & SLA Policies
+#### 5. Security & SLA Policy
 We will apply an **SLA-based Rate Limiting** policy to restrict traffic based on specific client credentials and tiers.
 
 ##### A. Create SLA Tier
@@ -122,15 +132,11 @@ We will apply an **SLA-based Rate Limiting** policy to restrict traffic based on
 4. Click **Apply**.
 
 ##### C. Request API Access
-1. Go to **Exchange** and search for the **emp-system-api**.
+1. Go to **Exchange** and search for the **Employee System API**.
 2. Click **Request Access**, create a new **Application**, and select the `Silver` tier.
 3. **Important:** Copy and save your **Client ID** and **Client Secret** for testing.
 
-### 2. API Implementation in Anypoint Studio (Mule 4)
-Create Mule application for employee system api in Anypoint Studio and run at port 8083 locally.
-- Host: Localhost
-- Port: 8081
-### 3. Local Deployment & Testing with Postman
+#### 6. Testing with Postman
 Verify the enforcement of your **SLA-based Rate Limiting** policy by simulating consumer requests using Postman.
 
 ##### Request Configuration
