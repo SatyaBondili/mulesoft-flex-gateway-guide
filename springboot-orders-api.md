@@ -108,9 +108,9 @@ Create Spring Boot application fororders api in Intellij IDEA and run at port 80
 
 #### Tech Stack
 
-* **Language:** OpenJdk 17
-* **Framework:** Spring Boot 3.x (Web)
-* **Tools:** Maven, IntelliJ IDEA
+* **Language:** OpenJDK 17
+* **Framework:** Spring Boot 4.x (Web)
+* **Tools:** Maven, IntelliJ IDEA Community Edition
 
 #### System Architecture
 
@@ -124,7 +124,7 @@ The application follows a clean, layered architecture to ensure maintainability 
 
 ##### 1. Initialize via Spring Initializr
 1. Go to [start.spring.io](https://start.spring.io/).
-2. Select **Project:** Maven, **Language:** Java, **Spring Boot:** 3.x.x.
+2. Select **Project:** Maven, **Language:** Java, **Spring Boot:** 4.0.1.
 3. **Java Version:** OpenJdk 17.
 4. Add Dependencies: `Spring Web`.
 
